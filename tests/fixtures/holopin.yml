@@ -1,0 +1,9 @@
+organization: dapr
+defaultSticker: clrqh1xny39170fl75cawk0h5
+stickers:
+  - id: clrqh1xny39170fl75cawk0h5
+    alias: dapr-contributor
+    name: Dapr Contributor
+  - id: zzzother0000000000000000z
+    alias: dapr-maintainer
+    name: Dapr Maintainer
