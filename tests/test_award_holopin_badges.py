@@ -188,10 +188,10 @@ def test_award_badge_posts_trigger_comment():
 
     body = ah.award_badge("dapr", "dapr", 42, "alice", "dapr-contributor",
                           dry_run=False, run_gh=fake_gh)
-    assert body == "@holopin-bot @alice dapr-contributor"
+    assert body == "@holopin-bot @alice dapr-contributor Thank you! Here's a digital badge as a small token of appreciation."
     assert calls == [[
         "pr", "comment", "42", "--repo", "dapr/dapr",
-        "--body", "@holopin-bot @alice dapr-contributor",
+        "--body", "@holopin-bot @alice dapr-contributor Thank you! Here's a digital badge as a small token of appreciation.",
     ]]
 
 
@@ -204,7 +204,7 @@ def test_award_badge_dry_run_posts_nothing():
 
     body = ah.award_badge("dapr", "dapr", 42, "alice", "dapr-contributor",
                           dry_run=True, run_gh=fake_gh)
-    assert body == "@holopin-bot @alice dapr-contributor"
+    assert body == "@holopin-bot @alice dapr-contributor Thank you! Here's a digital badge as a small token of appreciation."
     assert calls == []
 
 
@@ -274,7 +274,7 @@ def test_process_repo_awards_new_human_authors(tmp_path):
     # comment posted for alice only
     assert posted == [[
         "pr", "comment", "7", "--repo", "dapr/dapr",
-        "--body", "@holopin-bot @alice dapr-contributor",
+        "--body", "@holopin-bot @alice dapr-contributor Thank you! Here's a digital badge as a small token of appreciation.",
     ]]
     # ledger and cursor persisted
     repo_dir = tmp_path / "repos" / "dapr" / "dapr"

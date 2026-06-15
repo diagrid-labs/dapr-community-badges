@@ -1,3 +1,18 @@
+[project]
+name = "dapr-community-badges"
+version = "0.1.0"
+description = "Award Holopin badges to Dapr contributors via the local gh CLI."
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "PyYAML>=6.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=7.0",
+]
+
 [tool.pytest.ini_options]
 pythonpath = ["."]
 testpaths = ["tests"]

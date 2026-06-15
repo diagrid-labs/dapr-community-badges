@@ -20,8 +20,34 @@ PAT, no org secret, no `pull_request_target` machinery.
 
 - `gh` CLI installed and authenticated as an eligible member (`gh auth status`
   succeeds), with scope to read PRs and write issue/PR comments on the `dapr/*` repos.
-- Python 3.9+ with PyYAML: `pip install -r requirements.txt`.
+- [`uv`](https://docs.astral.sh/uv/) installed (it provisions Python 3.9+ and
+  the PyYAML dependency for you — see [Running the script](#running-the-script)).
 - The authenticated user is a member of the Dapr Holopin org with linked accounts.
+
+## Running the script
+
+[`uv`](https://docs.astral.sh/uv/) handles the virtual environment and the
+PyYAML dependency for you. First install `uv` (one time):
+
+- **Windows (PowerShell):** `powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"`
+- **macOS / Linux:** `curl -LsSf https://astral.sh/uv/install.sh | sh`
+
+(Or use a package manager — `winget install astral-sh.uv` on Windows,
+`brew install uv` on macOS.)
+
+Then run the script from the repo root — the commands are identical on every
+platform. `uv run` reads `pyproject.toml`, creates an isolated environment, and
+installs the dependencies on first use:
+
+```bash
+# Preview what would be awarded (recommended first run)
+uv run award_holopin_badges.py --dry-run
+
+# Award for real
+uv run award_holopin_badges.py
+```
+
+See [Usage](#usage) for the available flags.
 
 ## Folder layout — the folder is the opt-in
 
@@ -71,6 +97,5 @@ stays accurate.
 ## Development
 
 ```bash
-pip install -r requirements-dev.txt
-pytest -v
+uv run pytest -v
 ```
